@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Grid</title>
+    <style media="screen">
+      .container {
+        width: 600px;
+        margin: auto;
+      }
+
+      .header {
+        height: 200px;
+        background-color: yellow;
+      }
+
+      .sidebar {
+        float: left;
+        height: 300px;
+        width: 200px;
+      }
+
+      .aside {
+        background-color: red;
+        height: 150px;
+      }
+
+      .nav {
+        background-color: lime;
+        height: 150px;
+      }
+
+      .main {
+        /* float: right; */
+        background-color: aqua;
+        height: 300px;
+      }
+
+      .footer {
+        background-color: grey;
+        height: 50px;
+      }
+
+      /* Micro Clearfix */
+      .cf:before,
+      .cf:after {
+          content: " "; /* 1 */
+          display: table; /* 2 */
+      }
+
+      .cf:after {
+          clear: both;
+      }
+
+      /**
+       * For IE 6/7 only
+       * Include this rule to trigger hasLayout and contain floats.
+       */
+      .cf {
+          *zoom: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container cf">
+
+      <div class="header">
+
+      </div>
+
+      <div class="sidebar">
+        <div class="aside">
+
+        </div>
+        <div class="nav">
+
+        </div>
+      </div>
+
+      <div class="main">
+
+      </div>
+
+      <div class="footer">
+
+      </div>
+
+    </div>
+  </body>
+</html>

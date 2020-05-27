@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Grid</title>
+    <style media="screen">
+      .container {
+        width: 600px;
+        margin: 20px auto;
+        font: 20px arial;
+        text-align: center;
+        display: grid;
+        grid-template-areas: "header header"
+                             "aside main"
+                             "nav main"
+                             "footer footer";
+        grid-template-columns: 1fr 1.5fr;
+        /* grid-template-rows: 1fr 1fr 1.3fr 1fr; */
+      }
+
+      .header {
+        grid-area: header;
+        background-color: yellow;
+        height: 50px;
+      }
+
+      .aside {
+        grid-area: aside;
+        background-color: red;
+        /* height: 50px; */
+      }
+
+      .nav {
+        grid-area: nav;
+        background-color: lime;
+        /* height: 50px; */
+      }
+
+      .main {
+        grid-area: main;
+        background-color: aqua;
+        height: 400px;
+      }
+
+      .footer {
+        grid-area: footer;
+        background-color: grey;
+        height: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="header">
+        header
+      </div>
+
+      <div class="aside">
+        aside
+      </div>
+
+      <div class="nav">
+        nav
+      </div>
+
+      <div class="main">
+        main
+      </div>
+
+      <div class="footer">
+        footer
+      </div>
+
+    </div>
+  </body>
+</html>

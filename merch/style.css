@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  background-color: #DDD;
+  font-size: 18px;
+  font-family: 'Source Code Pro', arial, sans-serif;
+  margin: 50px;
+}
+
+/* Container */
+.container {
+  display: grid;
+  gap: 10px;
+}
+
+/* Header */
+header {
+  display: grid;
+  grid-template-areas:
+    'hero hero features1'
+    'hero hero features2';
+}
+
+.hero {
+  grid-area: hero;
+  min-height: 300px;
+  background-image: url(img/key1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+}
+
+/* Apapun yg di dalam class hero */
+.hero > * {
+  display: none;
+}
+
+.features {
+  background-color: #000;
+  color: #FFF;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.features1 {
+  grid-area: features1;
+  background-image: url(img/key2.jpg);
+  background-size: cover;
+}
+
+.features2 {
+  grid-area: features2;
+  background-image: url(img/key3.jpg);
+  background-size: cover;
+}
+
+.features .price {
+  font-size: 3em;
+}
+
+/* Navigation */
+nav {
+  order: -1; /* utk menggeser nav ke plg atas */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+nav .brand {
+  color: #333;
+}
+
+nav ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px;
+}
+
+nav a {
+  /* supaya menu bs di klik dr kotakny, tdk hnya dr font ny */
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  background-color: #000;
+  color: #FFF;
+  padding: 5px;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative; /* utk menaruh checkbox*/
+  z-index: 2;
+}
+
+.hamburger input {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  opacity: 0;
+  left: -5px;
+  top: -2px;
+  z-index: 2;
+}
+
+.hamburger span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 3px;
+  transition: .5s;
+  margin-top: 5px;
+}
+
+/* Hamburger Menu Animation */
+.hamburger span:nth-child(2) { /* ambil anak kedua dr class hamburger */
+  transform-origin: 0 0; /* mengganti letak poros ke pojok kiri saat rotate */
+}
+
+.hamburger span:nth-child(4) {
+  transform-origin: 0 100%; /* mengganti letak poros ke pojok kanan saat rotate */
+}
+
+.hamburger input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(1px, 1px);
+  background-color: #FFF;
+}
+
+.hamburger input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+  background-color: #FFF;
+}
+
+.hamburger input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0);
+  background-color: #FFF;
+}
+
+/* Services */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.service {
+  background-color: #FFF;
+  padding: 15px;
+  border: 2px solid #AAA;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
+}
+
+.gallery h2 {
+  /* grid-column-start: 1;
+  grid-column-end: -1; */
+  /* 2 baris di atas bs diganti sm 1 baris dibawah ini */
+  grid-column: 1 / -1;
+  text-align: center;
+  margin: 50px;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 1024px) {
+  nav {
+    order: inherit;
+    grid-template-columns: 1fr;
+  }
+
+  nav .brand {
+    display: none;
+  }
+
+  .hero > * {
+    display: block;
+    background-color: #000;
+    color: #FFF;
+    padding: 10px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    order: -1;
+    justify-items: end;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  nav {
+    justify-content: space-between;
+  }
+
+  nav ul {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80%;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    z-index: 1;
+    transform-origin: 100% 0;
+    transform: scale(1,0);
+    transition: .5s;
+  }
+
+  nav ul.slide {
+    transform: scale(1,1);
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    margin: 15px;
+  }
+  
+  header {
+    grid-template-areas:
+      'hero'
+      'features1'
+      'features2';
+  }
+}
